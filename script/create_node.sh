@@ -11,6 +11,11 @@ echo "$node node location is ~/${workspace}/src/$node/"
 echo "======================="
 tput sgr0
 cd ~/${workspace}/src/
+rm CMakeLists.txt
+catkin_init_workspace
+cd ../
+catkin_make
+
 catkin_create_pkg $node std_msgs roscpp
 echo "source ~/${workspace}/devel/setup.bash" >> ~/.bashrc
 
@@ -27,4 +32,3 @@ echo "$node package is created. Please change few word in CMakeLists.txt and pac
 echo "======================="
 tput sgr0
 
-source ~/.bashrc
