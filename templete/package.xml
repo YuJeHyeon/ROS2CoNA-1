@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <!-- Change here! --!>
-  <name>core</name>
-  <!-- Change here! --!>
+  <name>templete</name>
   <version>0.0.0</version>
   <description>The CoNA_HF_v2 core package</description>
 
