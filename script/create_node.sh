@@ -16,6 +16,7 @@ catkin_init_workspace
 cd ../
 catkin_make
 
+cd src/
 catkin_create_pkg $node std_msgs roscpp
 echo "source ~/${workspace}/devel/setup.bash" >> ~/.bashrc
 
