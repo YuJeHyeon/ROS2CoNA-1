@@ -17,7 +17,7 @@ echo "source ~/${workspace}/devel/setup.bash" >> ~/.bashrc
 cd ~/${workspace}/src/$node/src/
 cp ~/${workspace}/templete/templete.cpp ./
 cp ~/${workspace}/templete/CMakeLists.txt ../ 
-cp ~/${workspace}/package.xml ../ 
+cp ~/${workspace}/templete/package.xml ../ 
 mv templete.cpp $node.cpp
 cd ~/${workspace} 
 
