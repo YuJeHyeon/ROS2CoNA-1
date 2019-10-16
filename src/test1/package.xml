@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>test1</name>
+  <version>0.0.0</version>
+  <description>The CoNA_HF_v2 core package</description>
+
+  <maintainer email="jhkim@cogaplex.com">allenkim</maintainer>
+
+  <license>COGAPLEX</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+
+  <export>
+
+  </export>
+</package>
