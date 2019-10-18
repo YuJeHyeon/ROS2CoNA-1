@@ -4,36 +4,41 @@
 #include <cv_bridge/cv_bridge.h>
 #include <sstream>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
-  
-  if(argv[1] == NULL) return 1;
+  printf("projec \n");
 
-  ros::init(argc, argv, "pubCam");
-  ros::NodeHandle nh;
-  image_transport::ImageTransport it(nh);
-  image_transport::Publisher pub = it.advertise("camera/image", 1);
+  ros::init(argc, argv, "pubCam"); // create pubCam Node,// argc,argv -> rosrun packageName cppName (argc, argv) 
+  ros::NodeHandle nh;              
+  image_transport::ImageTransport it(nh);                               
+  image_transport::Publisher pub = it.advertise("camera/image", 1);   //topic name
 
-  
-  std::istringstream video_sourceCmd(argv[1]);
-  int video_source;
-  
-  if(!(video_sourceCmd >> video_source)) return 1;
+  cv::VideoCapture cap(0);    // num 0 camera capture
 
-  cv::VideoCapture cap(video_source);
-  
-  if(!cap.isOpened()) return 1;
-  cv::Mat frame;
-  sensor_msgs::ImagePtr msg;
+  if (!cap.isOpened())
+  {
+    printf("can't open!");
+    return 1;
+  }
+  cv::Mat frame;              // cv camera frame Matrix
+  sensor_msgs::ImagePtr msg;  
 
-  ros::Rate loop_rate(5);
-  while (nh.ok()) {
+  ros::Rate loop_rate(5);     // 5 times per second while loop
+  while (nh.ok())
+  {
     cap >> frame;
-    
-    if(!frame.empty()) {
-      msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", frame).toImageMsg();
+    cv::Mat camdata = frame.clone();
+
+    if (!camdata.empty())
+    {
+      msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", camdata).toImageMsg();
+      printf("camdata!\n");
       pub.publish(msg);
       cv::waitKey(1);
+    }
+    else
+    {
+      printf("can't open!");
     }
 
     ros::spinOnce();
