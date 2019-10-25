@@ -1,0 +1,8 @@
+<launch>
+  <node name="joywing" pkg="joywing" type="joywing" output="screen" >
+  </node>
+  <node name="joy_node" pkg="joy" type="joy_node">
+  </node>
+  <node name="RosAria" pkg="rosaria" type="RosAria">
+  </node>
+</launch>
