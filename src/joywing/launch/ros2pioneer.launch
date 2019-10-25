@@ -5,4 +5,8 @@
   </node>
   <node name="RosAria" pkg="rosaria" type="RosAria">
   </node>
+  <node name="rplidar" pkg="rplidar_ros" type="rplidarNode">
+  </node>
+  <node name="rplidarClient" pkg="rplidar_ros" type="rplidarNodeClient" output="screen">
+  </node>
 </launch>
